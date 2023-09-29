@@ -1,22 +1,21 @@
 import { useEffect } from 'react';
-import './App.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 
-function App() {
+function Footer() {
   useEffect(() => {
     AOS.init();
   }, [])
 
   return (
     <>
-    <div className='w-full bg-red-400'>
-      home
+    <div className='w-full bg-blue-400'>
+      footer
     </div>
 
     </>
   );
 }
 
-export default App;
+export default Footer;

@@ -3,24 +3,31 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { useState } from 'react';
 
 import Topbar from './components/Topbar/Topbar';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
+
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
+
   <>
-    <div className='w-full h-screen flex items-center justify-center'>
-      <div className='w-1/2 border border-4 border-orange-400 overflow-hidden rounded-md'>
+    <div className='w-full h-screen flex items-center justify-center z-10'>
+      <div className='w-1/2 border border-4 border-orange-400 overflow-hidden rounded-md bg-orange-50'>
         <React.StrictMode>
           <Topbar />
           <Header />
           <App />
-          <Footer/>
+          <Footer />
         </React.StrictMode>
       </div>
     </div>
+
   </>
 );
 

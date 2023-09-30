@@ -13,7 +13,7 @@ function TodoItem(todo) {
             <div data-aos="fade-left" className='flex items-center justify-between p-2 border mx-2 '>
                 <div className='flex gap-2'>
                     <input type="checkbox" />
-                    <p className='font-bold text-gray-600  w-[480px]'>
+                    <p className='font-bold text-gray-600 w-[470px]'>
                         {todo.title}
                     </p>
                 </div>

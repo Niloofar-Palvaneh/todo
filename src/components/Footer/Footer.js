@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 function Footer() {
 
-    const [activeLink, setActiveLink] = useState({})
+    const [activeLink, setActiveLink] = useState(1)
 
     const footerLinks = [
         {

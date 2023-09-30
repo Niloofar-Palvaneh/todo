@@ -24,6 +24,7 @@ const todos = [
     isCompleted: false,
     date: "8/9/1402"
   },
+
 ]
 
 function App() {
@@ -34,7 +35,7 @@ function App() {
   return (
     <>
 
-      <div className='mt-6'>
+      <div className='mt-6 h-[480px]'>
         {
           todos.map(todo => (
             <TodoItem {...todo} />

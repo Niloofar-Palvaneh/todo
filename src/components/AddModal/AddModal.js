@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function AddModal({ openModal }) {
     const [titleTodo, setTitleTodo] = useState("")
     const [dateTodo, setDateTodo] = useState("")
-    
+
+
     const setTitleTodoHandler = (event) => {
         setTitleTodo(event.target.value)
     }
@@ -12,8 +13,20 @@ function AddModal({ openModal }) {
     }
 
     const submitDateAddModal = () => {
+        const newTodo = {
+            title: titleTodo,
+            date: dateTodo
+        }
+        fetch("http://localhost:4000/todos", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newTodo)
+        })
         openModal()
     }
+
 
 
     return (

@@ -21,7 +21,7 @@ function App() {
   useEffect(() => {
     AOS.init();
     getTodos()
-  }, [])
+  }, [allTodos])
 
   return (
     <>

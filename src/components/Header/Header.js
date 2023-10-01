@@ -1,14 +1,8 @@
 import { useEffect, useState } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 import AddModal from '../AddModal/AddModal';
 
 function Header() {
     const [isOpenModal, setIsOpemModal] = useState(false)
-
-    useEffect(() => {
-        AOS.init();
-    }, [])
 
     const openModal = () => {
         setIsOpemModal(!isOpenModal)

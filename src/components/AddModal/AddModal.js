@@ -1,6 +1,20 @@
+import { useState } from "react";
 
+function AddModal({ openModal }) {
+    const [titleTodo, setTitleTodo] = useState("")
+    const [dateTodo, setDateTodo] = useState("")
+    
+    const setTitleTodoHandler = (event) => {
+        setTitleTodo(event.target.value)
+    }
+    const setDateTodoHandler = (event) => {
+        setDateTodo(event.target.value)
+    }
 
-function AddModal({openModal }) {
+    const submitDateAddModal = () => {
+        openModal()
+    }
+
 
     return (
         <>
@@ -10,15 +24,21 @@ function AddModal({openModal }) {
                     <div className='flex gap-2'>
                         <div className='flex flex-col items-start w-[200px] '>
                             <label htmlFor="title" className='text-gray-500'>Task</label>
-                            <input type="text" name='title' placeholder='learning...' className='outline-none border p-2 rounded' />
+                            <input
+                                onChange={setTitleTodoHandler}
+                                value={titleTodo} type="text" name='title' placeholder='learning...' className='outline-none border p-2 rounded' />
                         </div>
                         <div className='flex flex-col items-start w-[200px] '>
                             <label htmlFor="date" className='text-gray-500'>Date</label>
-                            <input type="text" name='date' placeholder='may/5/2023..' className='outline-none border p-2 rounded' />
+                            <input
+                                onChange={setDateTodoHandler}
+                                value={dateTodo} type="text" name='date' placeholder='may/5/2023..' className='outline-none border p-2 rounded' />
                         </div>
                     </div>
                     <div className='flex gap-2 items-center justify-end'>
-                        <button className='bg-orange-500 text-white p-1 rounded shadow border border-orange-500 w-[80px]
+                        <button
+                            onClick={submitDateAddModal}
+                            className='bg-orange-500 text-white p-1 rounded shadow border border-orange-500 w-[80px]
                               transition ease-in-out hover:bg-white hover:text-orange-500'>
                             Add
                         </button>

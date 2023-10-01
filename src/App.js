@@ -1,35 +1,17 @@
-import { useEffect } from 'react';
-import './App.css';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import { useEffect, useState } from 'react';
 
 import TodoItem from './components/TodoItem/TodoItem';
 
-const todos = [
-  {
-    id: 1,
-    title: "lerning js",
-    isCompleted: false,
-    date: "5/8/1400"
-  },
-  {
-    id: 2,
-    title: "lerning react",
-    isCompleted: false,
-    date: "25/8/1400"
-  },
-  {
-    id: 3,
-    title: "lerning nextjs",
-    isCompleted: false,
-    date: "8/9/1402"
-  },
-
-]
 
 function App() {
+  const [allTodos, setAllTodos] = useState([])
+  const getTodos = () => {
+    fetch("http://localhost:4000/todos")
+      .then(res => res.json())
+      .then(todos => setAllTodos(todos))
+  }
   useEffect(() => {
-    AOS.init();
+    getTodos()
   }, [])
 
   return (
@@ -37,9 +19,13 @@ function App() {
 
       <div className='mt-6 h-[480px]'>
         {
-          todos.map(todo => (
+         allTodos.length ?(
+          allTodos.map(todo => (
             <TodoItem {...todo} />
           ))
+         ):(
+          <h1>not found</h1>
+         )
         }
       </div>
 

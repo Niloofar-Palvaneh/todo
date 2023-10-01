@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-
 import TodoItem from './components/TodoItem/TodoItem';
 
 
@@ -19,13 +18,15 @@ function App() {
 
       <div className='mt-6 h-[480px]'>
         {
-         allTodos.length ?(
-          allTodos.map(todo => (
-            <TodoItem {...todo} />
-          ))
-         ):(
-          <h1>not found</h1>
-         )
+          allTodos.length ? (
+            allTodos.map(todo => (
+              <TodoItem {...todo} />
+            ))
+          ) : (
+            <div className='flex items-center justify-center'>
+              <img src="/free.png" alt="free" className='w-[300px]' />
+            </div>
+          )
         }
       </div>
 

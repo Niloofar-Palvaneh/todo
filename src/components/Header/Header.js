@@ -3,10 +3,20 @@ import AddModal from '../AddModal/AddModal';
 
 function Header() {
     const [isOpenModal, setIsOpemModal] = useState(false)
-
+    const [todos , setTodos] = useState([])
     const openModal = () => {
         setIsOpemModal(!isOpenModal)
     }
+
+    const getTodos = () => {
+        fetch("http://localhost:4000/todos")
+            .then(res => res.json())
+            .then(todos => setTodos(todos))
+    }
+    useEffect(() => {
+        getTodos()
+    }, [])
+
 
 
 
@@ -25,9 +35,17 @@ function Header() {
                     </svg>
                 </div>
                 <div>
-                    <h2>
-                        you are free
-                    </h2>
+                    {
+                        todos.length?(
+                            <h2>
+                                you have {todos.length} task
+                            </h2>
+                        ):(
+                            <h2>
+                                you are free
+                            </h2>
+                        )
+                    }
                 </div>
                 <button
                     onClick={openModal}

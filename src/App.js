@@ -23,6 +23,10 @@ function App() {
     getTodos()
   }, [allTodos])
 
+  const doTodoHandler = (id)=>{
+    console.log(id);
+  }
+
   return (
     <>
 
@@ -32,7 +36,9 @@ function App() {
             allTodos.map(todo => (
               <div data-aos="fade-left" className='flex items-center justify-between p-2 border mx-2 '>
                 <div className='flex gap-2'>
-                  <input type="checkbox" />
+                  <input
+                  onClick={()=>doTodoHandler(todo.id)}
+                  type="checkbox" />
                   <p className='font-bold text-gray-600 w-[470px]'>
                     {todo.title}
                   </p>

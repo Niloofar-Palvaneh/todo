@@ -15,7 +15,8 @@ function AddModal({ openModal }) {
     const submitDateAddModal = () => {
         const newTodo = {
             title: titleTodo,
-            date: dateTodo
+            date: dateTodo,
+            isCompleted : false
         }
         fetch("http://localhost:4000/todos", {
             method: "POST",

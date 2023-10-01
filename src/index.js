@@ -18,7 +18,7 @@ root.render(
 
   <>
     <div className='w-full h-screen flex items-center justify-center z-10'>
-      <div className='w-1/2 border border-4 border-orange-400 overflow-hidden rounded-md bg-orange-50'>
+      <div className='w-1/2 sm:w-full border border-4 border-orange-400 overflow-hidden rounded-md bg-orange-50'>
         <React.StrictMode>
           <Topbar />
           <Header />

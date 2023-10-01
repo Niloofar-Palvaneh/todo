@@ -1,14 +1,3 @@
 {
-    "todos": [
-        {
-            "id": 1,
-            "title": "learning json server",
-            "date": "5/8/1402"
-        },
-        {
-            "id": 2,
-            "title": "learning js",
-            "date": "5/9/1402"
-        }
-    ]
+  "todos": []
 }

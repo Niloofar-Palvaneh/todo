@@ -50,7 +50,7 @@ function App() {
   return (
     <>
 
-      <div className='mt-6 h-[480px]'>
+      <div className='mt-6 h-[450px] sm:h-auto md:h-auto'>
         {
           allTodos.length ? (
             allTodos.map(todo => (
@@ -59,7 +59,7 @@ function App() {
                   <div
                     onClick={() => doTodoHandler(todo)}
                     className={`w-[18px] h-[18px] rounded-full border border-orange-500 shadow cursor-pointer ${todo.isCompleted ? "bg-red-200" : "bg-green-200"} `}></div>
-                  <p className='font-bold text-gray-600 w-[470px]'>
+                  <p className='font-bold text-gray-600 w-[470px] sm:w-[190px]'>
                     {todo.title}
                   </p>
                 </div>
@@ -68,7 +68,7 @@ function App() {
                     todo.date ? (
                       todo.date
                     ) : (
-                      <p className='text-gray-400'>
+                      <p className='text-gray-400 sm:text-[8px]'>
                         Not Entered
                       </p>
                     )

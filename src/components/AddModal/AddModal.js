@@ -41,7 +41,7 @@ function AddModal({ openModal }) {
                 <div className='bg-white flex flex-col gap-4 p-4 rounded shadow-xl'>
                     <h3 className='text-xl font-bold text-gray-500'>Add Task</h3>
                     <div className='flex gap-2 sm:flex-col sm:gap-4'>
-                        <div className='flex flex-col items-start w-[200px] '>
+                        <div className='flex flex-col items-start w-[200px] sm:w-full '>
                             <label htmlFor="title" className='text-gray-500'>Task</label>
                             <input
                                 onChange={setTitleTodoHandler}
@@ -54,7 +54,7 @@ function AddModal({ openModal }) {
                                 )
                             }
                         </div>
-                        <div className='flex flex-col items-start w-[200px] '>
+                        <div className='flex flex-col items-start w-[200px] sm:w-full '>
                             <label htmlFor="date" className='text-gray-500'>Date</label>
                             <input
                                 onChange={setDateTodoHandler}

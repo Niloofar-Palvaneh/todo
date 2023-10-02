@@ -27,7 +27,7 @@ function Header() {
                     <AddModal openModal={openModal} />
                 )
             }
-            <div className='flex sm:flex-col sm:gap-4 items-center justify-between p-2 mt-2'>
+            <div className='flex sm:flex-col md:flex-col md:gap-2 sm:gap-4 items-center justify-between p-2 mt-2'>
                 <div className='border border-orange-700 rounded p-2  flex gap-2 items-center'>
                     <input className='outline-none bg-inherit' type="text" placeholder='search for task...' />
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-600">

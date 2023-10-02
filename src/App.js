@@ -26,8 +26,20 @@ function App() {
     getTodos()
   }, [allTodos])
 
-  const doTodoHandler = (id) => {
-    console.log(id);
+  const doTodoHandler = (todo) => {
+    fetch(`http://localhost:4000/todos/${todo.id}`, {
+      method: "PUT",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        ...editedTodo,
+        id: todo.id,
+        title: todo.title,
+        date: todo.date,
+        isCompleted: !todo.isCompleted
+      })
+    }).then(res => console.log(res))
   }
 
   const editTodo = (todo) => {
@@ -42,11 +54,11 @@ function App() {
         {
           allTodos.length ? (
             allTodos.map(todo => (
-              <div data-aos="fade-left" className='flex items-center justify-between p-2 border mx-2 '>
-                <div className='flex gap-2'>
-                  <input
-                    onClick={() => doTodoHandler(todo.id)}
-                    type="checkbox" />
+              <div data-aos="fade-left" className={`flex items-center justify-between p-2 border mx-2 mb-1 ${todo.isCompleted ? "bg-red-100":"bg-green-100"}`}>
+                <div className='flex items-center gap-2'>
+                  <div
+                    onClick={() => doTodoHandler(todo)}
+                    className={`w-[18px] h-[18px] rounded-full border border-orange-500 shadow cursor-pointer ${todo.isCompleted ? "bg-red-200" : "bg-green-200"} `}></div>
                   <p className='font-bold text-gray-600 w-[470px]'>
                     {todo.title}
                   </p>
@@ -57,7 +69,7 @@ function App() {
                       todo.date
                     ) : (
                       <p className='text-gray-400'>
-                      Not Entered
+                        Not Entered
                       </p>
                     )
                   }

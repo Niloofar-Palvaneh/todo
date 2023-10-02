@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-function EditModal({ editTodo , editedTodoId }) {
+function EditModal({ editTodo , editedTodo }) {
 
-    const [updatedTitle, setUpdatedTitile] = useState("")
-    const [updatedDate, setUpdatedDate] = useState("")
+    const [updatedTitle, setUpdatedTitile] = useState(editedTodo.title)
+    const [updatedDate, setUpdatedDate] = useState(editedTodo.date)
 
     const setTitleHandler = (e) => {
         setUpdatedTitile(e.target.value)
@@ -12,14 +12,15 @@ function EditModal({ editTodo , editedTodoId }) {
         setUpdatedDate(e.target.value)
     }
     const editTodoHandler = ()=>{
-        fetch(`http://localhost:4000/todos/${editedTodoId}` , {
+        fetch(`http://localhost:4000/todos/${editedTodo.id}` , {
             method : "PUT",
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                title : updatedTitle,
-                date : updatedDate,
+                ...editedTodo , 
+                title:updatedTitle,
+                date : updatedDate
             })
         })
         editTodo()

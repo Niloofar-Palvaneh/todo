@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 function AddModal({ openModal }) {
     const [titleTodo, setTitleTodo] = useState("")
     const [dateTodo, setDateTodo] = useState("")
+    const [error , setError] = useState(false)
 
 
     const setTitleTodoHandler = (event) => {
@@ -13,19 +14,23 @@ function AddModal({ openModal }) {
     }
 
     const submitDateAddModal = () => {
-        const newTodo = {
-            title: titleTodo,
-            date: dateTodo,
-            isCompleted : false
+        if(titleTodo){
+            const newTodo = {
+                title: titleTodo,
+                date: dateTodo,
+                isCompleted : false
+            }
+            fetch("http://localhost:4000/todos", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newTodo)
+            })
+            openModal()
+        }else{
+            setError(true)
         }
-        fetch("http://localhost:4000/todos", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newTodo)
-        })
-        openModal()
     }
 
 
@@ -41,6 +46,13 @@ function AddModal({ openModal }) {
                             <input
                                 onChange={setTitleTodoHandler}
                                 value={titleTodo} type="text" name='title' placeholder='learning...' className='outline-none border p-2 rounded' />
+                            {
+                                error && (
+                                    <p className="text-red-500 text-sm ml-1">
+                                        Please write a todo title
+                                    </p>
+                                )
+                            }
                         </div>
                         <div className='flex flex-col items-start w-[200px] '>
                             <label htmlFor="date" className='text-gray-500'>Date</label>
